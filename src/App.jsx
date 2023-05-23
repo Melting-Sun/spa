@@ -2,25 +2,35 @@ import React from "react";
 
 import Header from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useRoutes, Outlet } from "react-router-dom";
 import Courses from "./components/Courses";
 import MainCourse from "./components/MainCourse";
 import Home from "./components/Home";
-
+import About from "./components/About/About";
+import NotFound from "./components/NotFound";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <Header />
 
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course/:id" element={<MainCourse />} />
-        </Routes>
-      </div>
-    </Router>
+  let router = useRoutes([
+          { path:"/" ,element:<Home /> },
+          { path:"/courses" ,element:<Courses/>  },
+          { path:"/course/:id" ,element:<MainCourse/>  },
+          { 
+            path:"/about/*" ,element:<About/> , children: [
+            {path:"setting" ,element: <p>salam</p> },
+          ]
+             
+          },
+
+          { path:"/*", element:<NotFound/>  },
+  ])
+
+  return (
+    <>
+      <Header/>
+      {router}
+    </>
+
   );
 }
 

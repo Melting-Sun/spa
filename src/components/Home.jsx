@@ -3,11 +3,11 @@ import { Container } from "react-bootstrap";
 
 function Home() {
   return (
-    <Container style={{alignItems: "center"}}>
+    
       <div>
-        <h1>welcome to Elearn!</h1>
+        <h1 style={{textAlign: 'center'}}>welcome to Elearn!</h1>
       </div>
-    </Container>
+    
   );
 }
 

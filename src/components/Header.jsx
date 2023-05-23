@@ -18,6 +18,9 @@ function Header() {
             <Link to="/courses" style={{ marginLeft: 35, color: "black" }}>
               Courses
             </Link>
+            <Link to="/about" style={{ marginLeft: 35, color: "black" }}>
+              About
+            </Link>
           </Nav>
         </Container>
       </Navbar>
