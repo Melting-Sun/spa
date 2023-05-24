@@ -8,6 +8,12 @@ import MainCourse from "./components/MainCourse";
 import Home from "./components/Home";
 import About from "./components/About/About";
 import NotFound from "./components/NotFound";
+import Login from "./components/Login";
+import Panel from "./components/Panel";
+import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
+
+
 
 function App() {
   let router = useRoutes([
@@ -17,25 +23,26 @@ function App() {
     {
       path: "/about/*",
       element: <About />,
-      children: [{ path: "setting", element: <MainCourse /> }],
+      children: [{ path: "setting", element: <p>setting</p> }],
     },
 
     { path: "/*", element: <NotFound /> },
+    { path: "/login", element: <Login /> },
+    { path: "/*", element: <PrivateRoute/>, children: [
+      { path: 'panel', element: <Panel/>},
+      { path: "dashboard", element: <Dashboard /> },
+    ] },
+   
+  
+  
   ]);
 
-  // return (
-  //   <>
-  //     <Header/>
-  //     router
-  //   </>
-
-  // );
-  
   return (
     <div>
-      <Header/>
+      <Header />
+      {router}
     </div>
-  )
+  );
 }
 
 export default App;
